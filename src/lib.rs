@@ -8,9 +8,17 @@
 use godot::prelude::*;
 
 mod loaders;
+mod importers;
+mod plugin;
 
 // Re-export loaders for easy access
 pub use loaders::{MeshLoader, TextureLoader, WadLoader};
+
+// Re-export importers
+pub use importers::{MeshImporter, TextureImporter};
+
+// Re-export plugin
+pub use plugin::LtkEditorPlugin;
 
 struct LtkGodotExtension;
 

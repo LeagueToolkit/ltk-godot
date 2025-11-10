@@ -1,0 +1,15 @@
+[package]
+name = "ltk_godot"
+version = "0.1.0"
+edition = "2021"
+authors = ["LeagueToolkit Contributors"]
+description = "Godot 4 extension for importing League of Legends file formats"
+license = "AGPL-3.0"
+repository = "https://github.com/LeagueToolkit/ltk-godot"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+godot = { git = "https://github.com/godot-rust/gdext", branch = "master" }
+league-toolkit = { git = "https://github.com/LeagueToolkit/league-toolkit", features = ["wad", "mesh", "texture", "anim", "meta"] }

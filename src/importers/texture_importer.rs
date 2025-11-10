@@ -2,10 +2,10 @@
 //!
 //! EditorImportPlugin for League of Legends texture formats (DDS, TEX)
 
-use godot::prelude::*;
-use godot::classes::{EditorImportPlugin, IEditorImportPlugin};
 use godot::builtin::{PackedStringArray, Variant};
+use godot::classes::{EditorImportPlugin, IEditorImportPlugin};
 use godot::global::Error;
+use godot::prelude::*;
 
 /// EditorImportPlugin for League of Legends texture files
 #[derive(GodotClass)]
@@ -136,20 +136,41 @@ impl IEditorImportPlugin for TextureImporter {
     ) -> Error {
         godot_print!("Importing texture file: {}", source_file);
         godot_print!("Save path: {}", save_path);
-        
-        // Extract import options
-        let compress_mode = options.get("compress/mode").unwrap_or(Variant::from(0)).to::<i32>();
-        let generate_mipmaps = options.get("mipmaps/generate").unwrap_or(Variant::from(true)).to::<bool>();
-        let srgb = options.get("process/srgb").unwrap_or(Variant::from(true)).to::<bool>();
-        let fix_alpha_border = options.get("process/fix_alpha_border").unwrap_or(Variant::from(true)).to::<bool>();
-        let normal_map = options.get("process/normal_map").unwrap_or(Variant::from(false)).to::<bool>();
 
-        godot_print!("Import options - compress: {}, mipmaps: {}, srgb: {}, fix_alpha: {}, normal_map: {}", 
-                    compress_mode, generate_mipmaps, srgb, fix_alpha_border, normal_map);
+        // Extract import options
+        let compress_mode = options
+            .get("compress/mode")
+            .unwrap_or(Variant::from(0))
+            .to::<i32>();
+        let generate_mipmaps = options
+            .get("mipmaps/generate")
+            .unwrap_or(Variant::from(true))
+            .to::<bool>();
+        let srgb = options
+            .get("process/srgb")
+            .unwrap_or(Variant::from(true))
+            .to::<bool>();
+        let fix_alpha_border = options
+            .get("process/fix_alpha_border")
+            .unwrap_or(Variant::from(true))
+            .to::<bool>();
+        let normal_map = options
+            .get("process/normal_map")
+            .unwrap_or(Variant::from(false))
+            .to::<bool>();
+
+        godot_print!(
+            "Import options - compress: {}, mipmaps: {}, srgb: {}, fix_alpha: {}, normal_map: {}",
+            compress_mode,
+            generate_mipmaps,
+            srgb,
+            fix_alpha_border,
+            normal_map
+        );
 
         // TODO: Implement actual texture loading and conversion using league-toolkit
         // For now, this is a placeholder that returns OK
-        // 
+        //
         // Steps to implement:
         // 1. Read the source file using league-toolkit's texture parsing
         // 2. Convert the texture data to Godot's Image format
@@ -157,9 +178,8 @@ impl IEditorImportPlugin for TextureImporter {
         // 4. Save the resulting texture to save_path using ResourceSaver
 
         godot_warn!("TextureImporter: Actual import not yet implemented");
-        
+
         // Return OK for success, or ERR_* constant for errors
         Error::OK
     }
 }
-

@@ -1,0 +1,14 @@
+[configuration]
+entry_symbol = "gdext_rust_init"
+compatibility_minimum = 4.1
+reloadable = true
+
+[libraries]
+linux.debug.x86_64 = "res://target/debug/libltk_godot.so"
+linux.release.x86_64 = "res://target/release/libltk_godot.so"
+windows.debug.x86_64 = "res://target/debug/ltk_godot.dll"
+windows.release.x86_64 = "res://target/release/ltk_godot.dll"
+macos.debug = "res://target/debug/libltk_godot.dylib"
+macos.release = "res://target/release/libltk_godot.dylib"
+macos.debug.arm64 = "res://target/debug/libltk_godot.dylib"
+macos.release.arm64 = "res://target/release/libltk_godot.dylib"
